@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.10.0",
     "node-sass": "^4.11.0",
     "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
