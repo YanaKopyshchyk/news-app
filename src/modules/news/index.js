@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Button, Card, Elevation } from "@blueprintjs/core";
-
 import { getNews } from '../../actions/news';
-
 import s from './news.module.scss';
+
+import ArticlePreview from './article-preview';
+import ProgressBar from '../../components/progress-bar';
 
 class News extends Component {
   static propTypes = {
@@ -24,27 +24,26 @@ class News extends Component {
 
     return data.map((item, i) => {
       return (
-        <Card className="bp3-dark" key={i.toString()} interactive={true} elevation={Elevation.TWO}>
-          <h3 className="bp3-heading">
-            <a href={item.url}>{item.title}</a>
-          </h3>
-          <img className={s.img} src={item.urlToImage} alt="" />
-          <p className="bp3-text-muted bp3-text-large">{item.description}</p>
-          <p>Author: {item.author}</p>
-          <p>Sourse: {item.source.name}</p>
-          <p>Published: {item.publishedAt}</p>
-          <a href={item.url}>Show more</a>
-        </Card>
+        <ArticlePreview
+          key={i.toString()}
+          url={item.url}
+          imgUrl={item.urlToImage}
+          title={item.title}
+          description={item.description}
+          author={item.author || ''}
+          source={item.source.name}
+          publishedAt={item.publishedAt}
+        />
       );
     });
   }
 
   render() {
     return (
-      <div>
-        <div>
-          {this.renderList()}
-        </div>
+      <div className={s.container}>
+        <h1 className={s['container__title']}>Cosmology</h1>
+        {this.props.isFetching && <ProgressBar />}
+        {this.renderList()}
       </div>
     );
   }

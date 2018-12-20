@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-@import "~@blueprintjs/core/lib/css/blueprint.css";
-@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300i,400,500');
 
 * {
   margin: 0;
@@ -17,4 +15,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  background-color: #394b59;
 }
