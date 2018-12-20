@@ -41,7 +41,7 @@ class News extends Component {
   render() {
     return (
       <div className={s.container}>
-        <h1 className={s['container__title']}>Cosmology</h1>
+        <h1 className={s['container__title']}>Astronomy</h1>
         {this.props.isFetching && <ProgressBar />}
         {this.renderList()}
       </div>

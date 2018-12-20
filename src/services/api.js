@@ -1,24 +1,7 @@
 const API_KEY = 'language=en&apiKey=f6fcffddc709424fbfaaba82ca58990f';
 const BASE_URL = 'https://newsapi.org/v2/everything?';
 const COSMOLOGY_THEME = `q=
-  "cosmic microwave background"&
-  "big bang"&
-  "quantum physics"&
-  "theoretical physics"&
-  "astrophysics"&
-  "space-Time"&
-  "gravity"&
-  "astronomy"&
-  "gravitational waves"&
-  "multiverse"&
-  "string theory"&
-  "dark energy"&
-  "dark matter"&
-  "dark fluid"&
-  "elementary particles"&
-  "CERN"&
-  "black holes"&
-  "milky way"&
+  astronomy&
 `;
 
 export async function getNewsApi() {
@@ -36,3 +19,22 @@ export async function getNewsApi() {
 
   return result;
 }
+
+// "cosmic microwave background" &
+// "big bang"&
+// "quantum physics"&
+// "theoretical physics"&
+// "astrophysics"&
+// "space-Time"&
+// "gravity"&
+// "astronomy"&
+// "gravitational waves"&
+// "multiverse"&
+// "string theory"&
+// "dark energy"&
+// "dark matter"&
+// "dark fluid"&
+// "elementary particles"&
+// "CERN"&
+// "black holes"&
+// "milky way"&
