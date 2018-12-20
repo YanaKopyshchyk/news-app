@@ -1,11 +1,9 @@
 const API_KEY = 'language=en&apiKey=f6fcffddc709424fbfaaba82ca58990f';
 const BASE_URL = 'https://newsapi.org/v2/everything?';
-const COSMOLOGY_THEME = `q=
-  astronomy&
-`;
 
-export async function getNewsApi() {
-  const jsonData = await fetch(`${BASE_URL}${COSMOLOGY_THEME}${API_KEY}`);
+export async function getNewsApi(tag) {
+  const THEME = `q=${tag || 'astrophysics'}&`;
+  const jsonData = await fetch(`${BASE_URL}${THEME}${API_KEY}`);
   const response = await jsonData.json();
   const result = {};
 
@@ -19,22 +17,3 @@ export async function getNewsApi() {
 
   return result;
 }
-
-// "cosmic microwave background" &
-// "big bang"&
-// "quantum physics"&
-// "theoretical physics"&
-// "astrophysics"&
-// "space-Time"&
-// "gravity"&
-// "astronomy"&
-// "gravitational waves"&
-// "multiverse"&
-// "string theory"&
-// "dark energy"&
-// "dark matter"&
-// "dark fluid"&
-// "elementary particles"&
-// "CERN"&
-// "black holes"&
-// "milky way"&

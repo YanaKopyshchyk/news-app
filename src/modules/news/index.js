@@ -12,6 +12,11 @@ class News extends Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     data: PropTypes.array.isRequired,
+    tag: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    data: [],
   };
 
   componentDidMount() {
@@ -27,9 +32,9 @@ class News extends Component {
         <ArticlePreview
           key={i.toString()}
           url={item.url}
-          imgUrl={item.urlToImage}
           title={item.title}
           description={item.description}
+          imgUrl={item.urlToImage || ''}
           author={item.author || ''}
           source={item.source.name}
           publishedAt={item.publishedAt}
@@ -41,7 +46,7 @@ class News extends Component {
   render() {
     return (
       <div className={s.container}>
-        <h1 className={s['container__title']}>Astronomy</h1>
+        <h1 className={s['container__title']}>{this.props.tag}</h1>
         {this.props.isFetching && <ProgressBar />}
         {this.renderList()}
       </div>
@@ -50,9 +55,11 @@ class News extends Component {
 }
 
 function mapStateToProps(state) {
+  const { tag } = state.news;
   return {
     isFetching: state.news.isFetching,
-    data: state.news.data,
+    data: state.news.data[tag],
+    tag,
   };
 }
 
