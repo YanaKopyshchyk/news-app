@@ -1,14 +1,13 @@
 @import '../../styles/variables';
 
 .container {
+  height: 100vh;
   width: 800px;
   padding-top: 20px;
-  padding-bottom: 15px;
   background-color: $c-dark2;
 
   &__title {
     position: relative;
-    margin-bottom: 20px;
     padding: 20px;
     text-transform: uppercase;
     font-size: 20px;
@@ -17,8 +16,12 @@
     letter-spacing: 4px;
     background-color: $c-dark3;
     transition: $transition;
+    z-index: 2;
     color: $c-red1;
     cursor: default;
+    box-shadow:
+      0 0 0 1px rgba($c-dark1, 0.4),
+      0 2px 4px rgba($c-dark1, 0.4);
 
     &:hover {
       letter-spacing: 8px;
@@ -36,8 +39,26 @@
       width: 7px;
       height: 60px;
       background-color: $c-red1;
+      transition: $transition;
       content: '';
     }
+  }
+}
+
+.list {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 60px);
+  overflow: hidden;
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -17px;
+    padding-top: 20px;
+    overflow-y: scroll;
   }
 }
 
@@ -45,7 +66,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 0 15px 15px;
+  margin-bottom: 15px;
   padding: 20px;
   font-size: 14px;
   line-height: 1.5;
@@ -55,14 +76,10 @@
   background-color: $c-dark3;
   transition: $transition;
   color: $c-text;
+  cursor: pointer;
   box-shadow:
     0 0 0 1px rgba($c-dark1, 0.4),
     0 2px 4px rgba($c-dark1, 0.4);
-  cursor: pointer;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 
   &:hover {
     box-shadow:

@@ -48,7 +48,12 @@ class News extends Component {
       <div className={s.container}>
         <h1 className={s['container__title']}>{this.props.tag}</h1>
         {this.props.isFetching && <ProgressBar />}
-        {this.renderList()}
+
+        <div className={s['list']}>
+          <div className={s['list__inner']}>
+            {this.renderList()}
+          </div>
+        </div>
       </div>
     );
   }
