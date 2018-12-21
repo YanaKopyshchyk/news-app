@@ -90,15 +90,31 @@
 
   &__info {
     flex: 1 1 auto;
-    margin-left: 20px;
   }
 
   &__img {
+    position: relative;
     flex: 0 0 300px;
     width: 300px;
+    margin-right: 20px;
     border-radius: 6px;
-    border: 2px solid lighten($c-dark1, 5%);
-    background-color: lighten($c-dark1, 5%);
+    border: 1px solid lighten($c-dark1, 5%);
+    background-color: lighten($c-dark1, 8%);
+    
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      height: 100%;
+      font-weight: 300;
+      font-size: 13px;
+      text-align: center;
+      background-color: lighten($c-dark1, 7%);
+      content: attr(alt);
+      color: $c-text3;
+    }
   }
 
   &__title {

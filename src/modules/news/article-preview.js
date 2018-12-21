@@ -15,11 +15,18 @@ export default class ArticlePreview extends Component {
   };
 
   render() {
-    const { author, source } = this.props;
+    const { author, source, imgUrl } = this.props;
 
     return (
       <a href={this.props.url} className={s['preview']} target="_blank" rel="noopener noreferrer">
-        <img className={s['preview__img']} src={this.props.imgUrl} alt={this.props.title} />
+        {imgUrl &&
+          <img
+            className={s['preview__img']}
+            src={this.props.imgUrl}
+            alt={this.props.title}
+          />
+        }
+
         <div className={s['preview__info']}>
           <h3 className={s['preview__title']}>
             {this.props.title}
