@@ -1,15 +1,19 @@
-const API_KEY = 'apiKey=f6fcffddc709424fbfaaba82ca58990f';
-const BASE_URL = 'https://newsapi.org/v2/everything?';
-const LANGUAGE = 'language=en&';
+const KEY = 'apiKey=f6fcffddc709424fbfaaba82ca58990f';
+const URL = 'https://newsapi.org/v2/everything?language=en&';
 
-export async function getNewsApi(tag) {
-  const THEME = `q=${tag || 'astrophysics'}&`;
+export async function getNewsApi(tag, page = 1, size = 10) {
+  const theme = `q=${tag || 'astrophysics'}&`;
+  const pageSize = `pageSize=${size}&`;
+  const pageNumber = `page=${page}&`;
 
-  const jsonResponse = await fetch(`${BASE_URL}${THEME}${LANGUAGE}${API_KEY}`);
+  const jsonResponse = await fetch(`${URL}${theme}${pageSize}${pageNumber}${KEY}`);
   const response = await jsonResponse.json();
 
   if (response.status === 'ok') {
-    return { data: response.articles };
+    return {
+      data: response.articles,
+      total: response.totalResults,
+    };
   }
 
   if (response.status === 'error') {

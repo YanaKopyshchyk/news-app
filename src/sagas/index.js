@@ -9,10 +9,10 @@ import {
 
 function* fetchNews() {
   const state = yield select();
-  const { data, error } = yield call(getNewsApi, state.news.tag);
+  const { data, total, error } = yield call(getNewsApi, state.news.tag);
 
   if (data) {
-    yield put({ type: NEWS_SUCCEEDED, payload: data });
+    yield put({ type: NEWS_SUCCEEDED, payload: { data, total } });
   }
 
   if (error) {

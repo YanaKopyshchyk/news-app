@@ -7,8 +7,9 @@ import {
 
 const initialState = {
   data: {},
-  tag: 'astrophysics',
   isFetching: false,
+  tag: 'astrophysics',
+  total: 0,
 };
 
 export default function news(state = initialState, action) {
@@ -19,9 +20,10 @@ export default function news(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
+        total: action.payload.total,
         data: {
           ...state.data,
-          [state.tag]: action.payload,
+          [state.tag]: action.payload.data,
         },
       };
     case NEWS_FAILED:

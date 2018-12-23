@@ -7,6 +7,7 @@ import s from './news.module.scss';
 
 import ArticlePreview from './article-preview';
 import ProgressBar from '../../components/progress-bar';
+import Button from '../../components/button';
 
 class News extends Component {
   static propTypes = {
@@ -52,6 +53,9 @@ class News extends Component {
         <div className={s['list']}>
           <div className={s['list__inner']}>
             {this.renderList()}
+            {/* <div className={s['list__btn-wrap']}>
+              <Button>Show more</Button>
+            </div> */}
           </div>
         </div>
       </div>
