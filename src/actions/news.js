@@ -4,8 +4,8 @@ export const NEWS_FAILED = 'news/NEWS_FAILED';
 
 export const SET_TAG = 'news/SET_TAG';
 
-export function getNews() {
-  return { type: NEWS_REQUEST };
+export function getNews(tag, page = 1) {
+  return { type: NEWS_REQUEST, payload: { tag, page } };
 }
 
 export function setTag(tag) {

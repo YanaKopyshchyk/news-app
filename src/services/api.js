@@ -1,8 +1,8 @@
 const KEY = 'apiKey=f6fcffddc709424fbfaaba82ca58990f';
 const URL = 'https://newsapi.org/v2/everything?language=en&';
 
-export async function getNewsApi(tag, page = 1, size = 10) {
-  const theme = `q=${tag || 'astrophysics'}&`;
+export async function getNewsApi(tag = 'astrophysics', page = 1, size = 10) {
+  const theme = `q=${tag}&`;
   const pageSize = `pageSize=${size}&`;
   const pageNumber = `page=${page}&`;
 

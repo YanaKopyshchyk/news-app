@@ -9,7 +9,6 @@ const initialState = {
   data: {},
   isFetching: false,
   tag: 'astrophysics',
-  total: 0,
 };
 
 export default function news(state = initialState, action) {
@@ -20,10 +19,12 @@ export default function news(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        total: action.payload.total,
         data: {
           ...state.data,
-          [state.tag]: action.payload.data,
+          [state.tag]: {
+            total: action.payload.total,
+            articles: updateArray(state.data[state.tag], action.payload.data),
+          },
         },
       };
     case NEWS_FAILED:
@@ -35,4 +36,8 @@ export default function news(state = initialState, action) {
     default:
       return { ...state };
   }
+}
+
+function updateArray(oldData, newArr) {
+  return oldData ? [...oldData.articles, ...newArr] : newArr;
 }

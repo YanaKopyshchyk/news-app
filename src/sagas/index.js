@@ -7,9 +7,9 @@ import {
   SET_TAG,
 } from '../actions/news';
 
-function* fetchNews() {
-  const state = yield select();
-  const { data, total, error } = yield call(getNewsApi, state.news.tag);
+function* fetchNews(action) {
+  const { tag, page } = action.payload;
+  const { data, total, error } = yield call(getNewsApi, tag, page);
 
   if (data) {
     yield put({ type: NEWS_SUCCEEDED, payload: { data, total } });
@@ -22,13 +22,12 @@ function* fetchNews() {
 
 function* watchTagChange() {
   while (true) {
-    yield take(SET_TAG);
-
+    const action = yield take(SET_TAG);
     const state = yield select();
-    const { news: { tag, data } } = state;
+    const tag = action.payload;
 
-    if (!data[tag]) {
-      yield put({ type: NEWS_REQUEST });
+    if (!state.news.data[tag]) {
+      yield put({ type: NEWS_REQUEST, payload: { tag } });
     }
   }
 }

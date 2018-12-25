@@ -14,14 +14,16 @@ class News extends Component {
     isFetching: PropTypes.bool.isRequired,
     data: PropTypes.array.isRequired,
     tag: PropTypes.string.isRequired,
-  };
-
-  static defaultProps = {
-    data: [],
+    total: PropTypes.number.isRequired,
   };
 
   componentDidMount() {
-    this.props.getNews();
+    this.props.getNews(this.props.tag);
+  }
+
+  loadMore = () => {
+    const page = Math.floor(this.props.data.length / 10) + 1;
+    this.props.getNews(this.props.tag, page);
   }
 
   renderList() {
@@ -45,17 +47,27 @@ class News extends Component {
   }
 
   render() {
+    const { data, isFetching } = this.props;
+
     return (
       <div className={s.container}>
         <h1 className={s['container__title']}>{this.props.tag}</h1>
-        {this.props.isFetching && <ProgressBar />}
+        {(isFetching && !data.length) && <ProgressBar />}
 
         <div className={s['list']}>
           <div className={s['list__inner']}>
             {this.renderList()}
-            {/* <div className={s['list__btn-wrap']}>
-              <Button>Show more</Button>
-            </div> */}
+
+            {this.props.total > data.length &&
+              <div className={s['list__btn-wrap']}>
+                  <Button
+                    onClick={this.loadMore}
+                    loading={isFetching}
+                  >
+                    Load more news
+                  </Button>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -63,12 +75,15 @@ class News extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { tag } = state.news;
+function mapStateToProps({ news }) {
+  const { tag } = news;
+  const themeNews = news.data[tag];
+
   return {
-    isFetching: state.news.isFetching,
-    data: state.news.data[tag],
     tag,
+    isFetching: news.isFetching,
+    data: themeNews ? themeNews.articles : [],
+    total: themeNews ? themeNews.total : 0,
   };
 }
 
