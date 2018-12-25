@@ -7,8 +7,7 @@
     position: relative;
     margin-bottom: 20px;
     padding: 20px;
-    font-size: 20px;
-    font-weight: 500;
+    font: 300 20px 'Roboto';
     line-height: 1;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -16,7 +15,7 @@
     z-index: 2;
     background-color: $c-dark3;
     cursor: default;
-    color: $c-red1;
+    color: $c-text1;
     box-shadow:
       0 0 0 1px rgba($c-dark1, 0.4),
       0 2px 4px rgba($c-dark1, 0.4);
@@ -32,7 +31,7 @@
     &::before {
       position: absolute;
       top: 0;
-      left: -7px;
+      left: 0px;
       display: block;
       width: 7px;
       height: 60px;

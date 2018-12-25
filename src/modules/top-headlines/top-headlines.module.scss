@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.container {
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 13px;
+  background-color: lighten($c-dark1, 5%);
+  
+  &__title {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid $c-red2;
+    color: $c-text2;
+  }
+}
+
+.preview {
+  margin-bottom: 15px;
+  
+  &__text {
+    text-decoration: none;
+    color: $c-text2;
+
+    &:hover {
+      text-decoration: underline;
+      color: $c-text1;
+    }
+  }
+}

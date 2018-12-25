@@ -1,30 +1,36 @@
 @import '../../styles/variables';
 
 .container {
-  flex: 0 0 290px;
-  margin-left: 10px;
-  padding: 20px 10px;
-  background-color: darken($c-dark2, 5%);
-  box-shadow:
-    0 0 0 1px rgba($c-dark1, 0.4),
-    0 2px 4px rgba($c-dark1, 0.4);
+  padding: 10px;
+  background-color: lighten($c-dark1, 5%);
+
+  &__title {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid $c-red2;
+    color: $c-text2;
+  }
 }
 
 .tag {
   display: inline-block;
   margin: 3px;
-  padding: 2px 6px;
+  padding: 3px 6px;
   font-size: 12px;
   border-radius: 4px;
   border: 1px solid $c-dark1;
-  background-color: $c-dark3;
+  background-color: lighten($c-dark1, 10%);
   transition: $transition;
-  color: $c-text2;
   cursor: pointer;
+  user-select: none;
+  color: $c-text2;
 
   &--active,
   &:hover {
+    background-color: lighten($c-dark1, 18%);
     color: $c-text1;
-    background-color: rgba($c-text2, 0.2);
   }
 }

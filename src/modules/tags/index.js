@@ -34,6 +34,7 @@ class Tags extends Component {
   render() {
     return (
       <div className={s.container}>
+        <p className={s['container__title']}>Search news by tag</p>
         {this.renderTags()}
       </div>
     );

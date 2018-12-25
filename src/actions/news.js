@@ -1,8 +1,8 @@
-export const NEWS_REQUEST = 'news/NEWS_REQUEST';
-export const NEWS_SUCCEEDED = 'news/NEWS_SUCCEEDED';
-export const NEWS_FAILED = 'news/NEWS_FAILED';
+export const NEWS_REQUEST = 'NEWS_REQUEST';
+export const NEWS_SUCCEEDED = 'NEWS_SUCCEEDED';
+export const NEWS_FAILED = 'NEWS_FAILED';
 
-export const SET_TAG = 'news/SET_TAG';
+export const SET_TAG = 'SET_TAG';
 
 export function getNews(tag, page = 1) {
   return { type: NEWS_REQUEST, payload: { tag, page } };

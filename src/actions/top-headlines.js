@@ -1,0 +1,7 @@
+export const TOP_HEADLINES_REQUEST = 'TOP_HEADLINES_REQUEST';
+export const TOP_HEADLINES_SUCCEEDED = 'TOP_HEADLINES_SUCCEEDED';
+export const TOP_HEADLINES_FAILED = 'TOP_HEADLINES_FAILED';
+
+export function getTopHeadlines() {
+  return { type: TOP_HEADLINES_REQUEST };
+}

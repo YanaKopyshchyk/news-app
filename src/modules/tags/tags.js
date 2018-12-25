@@ -1,6 +1,6 @@
 const tags = [
-  'astronomy',
   'astrophysics',
+  'astronomy',
   'big bang',
   'black holes',
   'cosmic microwave background',
