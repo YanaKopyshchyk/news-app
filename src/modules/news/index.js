@@ -11,8 +11,8 @@ import Button from '../../components/button';
 
 class News extends Component {
   static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
     data: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     tag: PropTypes.string.isRequired,
     total: PropTypes.number.isRequired,
   };
@@ -54,21 +54,19 @@ class News extends Component {
         <h1 className={s['container__title']}>{this.props.tag}</h1>
         {(isFetching && !data.length) && <ProgressBar />}
 
-        <div className={s['list']}>
-          <div className={s['list__inner']}>
-            {this.renderList()}
+        <div>
+          {this.renderList()}
 
-            {this.props.total > data.length &&
-              <div className={s['list__btn-wrap']}>
-                  <Button
-                    onClick={this.loadMore}
-                    loading={isFetching}
-                  >
-                    Load more news
-                  </Button>
-              </div>
-            }
-          </div>
+          {this.props.total > data.length &&
+            <div className={s['container__btn-wrap']}>
+                <Button
+                  onClick={this.loadMore}
+                  loading={isFetching}
+                >
+                  Load more news
+                </Button>
+            </div>
+          }
         </div>
       </div>
     );
