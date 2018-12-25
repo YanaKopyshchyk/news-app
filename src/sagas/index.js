@@ -1,5 +1,5 @@
 import { take, call, put, takeEvery, all, select } from 'redux-saga/effects';
-import { getNewsApi, getTopHeadlinesApi } from '../services/api';
+import { getNewsApi, getTopHeadlinesApi, getForecastApi } from '../services/api';
 import {
   NEWS_REQUEST,
   NEWS_SUCCEEDED,
@@ -11,6 +11,11 @@ import {
   TOP_HEADLINES_SUCCEEDED,
   TOP_HEADLINES_FAILED,
 } from '../actions/top-headlines';
+import {
+  FORECAST_REQUEST,
+  FORECAST_SUCCEEDED,
+  FORECAST_FAILED,
+} from '../actions/forecast';
 
 function* fetchNews(action) {
   const { tag, page } = action.payload;
@@ -37,6 +42,18 @@ function* fetchTopHeadlines() {
   }
 }
 
+function* fetchForecastApi() {
+  const { data, error } = yield call(getForecastApi);
+
+  if (data) {
+    yield put({ type: FORECAST_SUCCEEDED, payload: { data } });
+  }
+
+  if (error) {
+    yield put({ type: FORECAST_FAILED, payload: error });
+  }
+}
+
 function* watchTagChange() {
   while (true) {
     const action = yield take(SET_TAG);
@@ -57,10 +74,15 @@ function* watchTopHeadlinesRequest() {
   yield takeEvery(TOP_HEADLINES_REQUEST, fetchTopHeadlines);
 }
 
+function* watchForecastRequest() {
+  yield takeEvery(FORECAST_REQUEST, fetchForecastApi);
+}
+
 export default function* saga() {
   yield all([
     watchNewsRequest(),
     watchTagChange(),
     watchTopHeadlinesRequest(),
+    watchForecastRequest(),
   ]);
 }

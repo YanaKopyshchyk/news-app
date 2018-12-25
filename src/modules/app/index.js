@@ -5,8 +5,9 @@ import Tags from '../tags';
 import Footer from './footer';
 import TopHeadlines from '../top-headlines';
 
-import '../../styles/index.scss';
 import s from './app.module.scss';
+import '../../styles/index.scss';
+import '../../assets/css/owfont-regular.min.css';
 
 export default class App extends Component {
   render() {

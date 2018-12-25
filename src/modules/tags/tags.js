@@ -19,7 +19,7 @@ const tags = [
   'JWST',
   'LHC',
   'LIGO',
-  '"Milky Way"',
+  '"Milky Way galaxy"',
   'Multiverse',
   'NASA',
   'quantum physics',

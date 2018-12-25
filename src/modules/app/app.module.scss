@@ -23,8 +23,9 @@
 .footer {
   flex: 0 0 auto;
   margin-top: 25px;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
+  user-select: none;
   background-color: lighten($c-dark1, 5%);
   color: $c-text3;
   

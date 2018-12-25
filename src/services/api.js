@@ -27,12 +27,26 @@ export async function getTopHeadlinesApi() {
   const response = await jsonResponse.json();
 
   if (response.status === 'ok') {
-    return {
-      data: response.articles,
-    };
+    return { data: response.articles };
   }
 
   if (response.status === 'error') {
     return { error: response.message };
   }
 } 
+
+export async function getForecastApi() {
+  const URL = 'api.openweathermap.org/data/2.5/forecast?q=Kyiv,ua&mode=json';
+  const jsonReaponse = await fetch(URL);
+  const response = await jsonReaponse.json();
+
+  console.log('response weather', response);
+
+  if (response.status === 'ok') {
+    return { data: response };
+  }
+
+  if (response.status === 'error') {
+    return { error: response.message };
+  }
+}

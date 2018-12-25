@@ -9,9 +9,19 @@ const Footer = () => {
         <a
           className={s['footer__link']}
           href="https://github.com/YanaKopyshchyk/news-app"
-          target="_blank" rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          &nbsp;GitHub&nbsp;
+          &nbsp;GitHub.&nbsp;
+        </a>
+        &nbsp;Inspired by&nbsp;
+        <a
+          className={s['footer__link']}
+          href="https://newsapi.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &nbsp;News API&nbsp;
         </a>
       </p>
     </div>
