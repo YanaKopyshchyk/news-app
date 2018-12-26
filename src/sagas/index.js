@@ -1,4 +1,4 @@
-import { take, call, put, takeEvery, all, select } from 'redux-saga/effects';
+import { take, call, put, takeEvery, all } from 'redux-saga/effects';
 import { getNewsApi, getTopHeadlinesApi, getForecastApi } from '../services/api';
 import {
   NEWS_REQUEST,
@@ -21,48 +21,37 @@ function* fetchNews(action) {
   const { tag, page } = action.payload;
   const { data, total, error } = yield call(getNewsApi, tag, page);
 
-  if (data) {
+  if (data)
     yield put({ type: NEWS_SUCCEEDED, payload: { data, total } });
-  }
 
-  if (error) {
+  if (error)
     yield put({ type: NEWS_FAILED, payload: error });
-  }
 }
 
 function* fetchTopHeadlines() {
   const { data, error } = yield call(getTopHeadlinesApi);
 
-  if (data) {
+  if (data)
     yield put({ type: TOP_HEADLINES_SUCCEEDED, payload: { data } });
-  }
 
-  if (error) {
+  if (error)
     yield put({ type: TOP_HEADLINES_FAILED, payload: error });
-  }
 }
 
 function* fetchForecastApi() {
   const { data, error } = yield call(getForecastApi);
 
-  if (data) {
-    yield put({ type: FORECAST_SUCCEEDED, payload: { data } });
-  }
+  if (data)
+    yield put({ type: FORECAST_SUCCEEDED, payload: data });
 
-  if (error) {
+  if (error)
     yield put({ type: FORECAST_FAILED, payload: error });
-  }
 }
 
 function* watchTagChange() {
   while (true) {
     const action = yield take(SET_TAG);
-    const state = yield select();
-    const tag = action.payload;
-
-    if (!state.news.data[tag]) {
-      yield put({ type: NEWS_REQUEST, payload: { tag } });
-    }
+    yield put({ type: NEWS_REQUEST, payload: { tag: action.payload } });
   }
 }
 

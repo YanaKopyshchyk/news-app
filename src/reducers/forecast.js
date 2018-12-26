@@ -5,7 +5,6 @@ import {
 } from '../actions/forecast';
 
 const initialState = {
-  data: null,
   isFetching: false,
 };
 
@@ -14,7 +13,7 @@ export default function forecast(state = initialState, action) {
     case FORECAST_REQUEST:
       return { ...state, isFetching: true };
     case FORECAST_SUCCEEDED:
-      return { ...state, isFetching: false, data: action.payload.data };
+      return { ...state, isFetching: false, ...action.payload };
     case FORECAST_FAILED:
       return { ...state, isFetching: false };
 

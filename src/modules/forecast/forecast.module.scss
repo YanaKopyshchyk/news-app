@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.container {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: lighten($c-dark1, 5%);
+  user-select: none;
+  color: $c-text2;
+
+  &__title {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid $c-red2;
+    color: $c-text2;
+  }
+}
+
+.daily {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  font-size: 12px;
+
+  &__icon {
+    color: $c-white;
+  }
+
+  &__date {
+    font-size: 13px;
+    width: 56px;
+  }
+
+  &__day,
+  &__night {
+    display: inline-block;
+    min-width: 65px;
+    padding: 3px 3px;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid;
+  }
+
+  &__day {
+    background-color: $c-white;
+    border-color: $c-black;
+    color: $c-black;
+  }
+
+  &__night {
+    background-color: $c-black;
+    border-color: $c-white;
+    color: $c-white;
+  }
+
+  &__desc {
+    margin-bottom: 1px;
+    font-style: italic;
+  }
+}

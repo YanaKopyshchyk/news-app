@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getNews } from '../../actions/news';
-import { getForecast } from '../../actions/forecast';
 import s from './news.module.scss';
 
 import ArticlePreview from './article-preview';
@@ -21,7 +20,6 @@ class News extends Component {
 
   componentDidMount() {
     this.props.getNews(this.props.tag);
-    // this.props.getForecast();
   }
 
   loadMore = () => {
@@ -88,4 +86,4 @@ function mapStateToProps({ news }) {
   };
 }
 
-export default connect(mapStateToProps, { getNews, getForecast })(News);
+export default connect(mapStateToProps, { getNews })(News);

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Spinner from '../../components/spinner';
+
 import { getTopHeadlines } from '../../actions/top-headlines';
 import s from './top-headlines.module.scss';
 
@@ -36,6 +38,7 @@ class TopHeadlines extends Component {
     return (
       <div className={s.container}>
         <p className={s['container__title']}>Top Headlines</p>
+        {this.props.isFetching && <Spinner center />}
         {this.renderList()}
       </div>
     );
@@ -44,6 +47,7 @@ class TopHeadlines extends Component {
 
 function mapStateToProps(state) {
   return {
+    isFetching: state.topHeadlines.isFetching,
     data: state.topHeadlines.data,
   };
 }

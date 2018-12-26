@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Spinner from '../spinner';
+
 import s from './button.module.scss';
 
 const Button = (props) => {
@@ -9,7 +12,7 @@ const Button = (props) => {
       onClick={props.onClick}
     >
       {props.children}
-      {props.loading && <div className={s['btn__spinner']} />}
+      {props.loading && <Spinner style={{ marginLeft: '15px' }} />}
     </button>
   );
 }

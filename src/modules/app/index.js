@@ -4,6 +4,7 @@ import News from '../news';
 import Tags from '../tags';
 import Footer from './footer';
 import TopHeadlines from '../top-headlines';
+import Forecast from '../forecast';
 
 import s from './app.module.scss';
 import '../../styles/index.scss';
@@ -18,6 +19,7 @@ export default class App extends Component {
           <div className={s.aside}>
             <Tags />
             <TopHeadlines />
+            <Forecast />
           </div>
         </div>
 
